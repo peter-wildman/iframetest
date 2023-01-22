@@ -98,7 +98,7 @@
     <script>
 
     //variables here
-    // let myFont;
+    let myFont;
     let aFlagAlphaRB = 0;
     let aFlagYypos;
     let aFlagYyposEndPoint;
@@ -120,7 +120,7 @@
     function preload(){
       // myFont = loadFont('./apercu_bold_pro.otf');
       // myFont = loadFont('./apercu_light_pro_95.otf');
-      // myFont = loadFont('./apercu_medium_pro.otf');
+      myFont = loadFont('./apercu_medium_pro.otf');
 
     }
 
@@ -137,7 +137,7 @@
       let leftPadding = (width-616)/2;
       if(leftPadding < 0) leftPadding = 0;
       document.getElementById("form-wrapper").style.left = leftPadding+"px";
-      // textFont(myFont);
+      textFont(myFont);
     }
 
     function draw() {
