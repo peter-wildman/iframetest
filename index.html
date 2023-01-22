@@ -117,6 +117,8 @@
     let parThree = "We pay respects to their Elders, knowledge systems, customs and lores.";
     let parFour = "What Country are you on?";
 
+    let beginTimer = 0;
+
     function preload(){
       // myFont = loadFont('./apercu_bold_pro.otf');
       // myFont = loadFont('./apercu_light_pro_95.otf');
@@ -141,19 +143,22 @@
     }
 
     function draw() {
+      beginTimer++;
+      document.getElementById("timer").innerHTML = beginTimer;
       //fade in Aboriginal flag
       textSize(fontSize);
       fill(0,aFlagAlphaRB);
       rect(0,0,width,height/2);
       fill(255,0,0,aFlagAlphaRB);
       rect(0,height/2,width,height/2);
+
       fill(sunColor);
       let dy = aFlagYyposEndPoint - aFlagYypos;
       circle(width/2, aFlagYypos,sunD);
       if(showText) background(toColor);
-      if(aFlagAlphaRB < 255) aFlagAlphaRB+= 2.5;
+      if(aFlagAlphaRB < 255) aFlagAlphaRB+= 0.5;
       //animate the sun up onto the flag
-      if(aFlagAlphaRB > 125) aFlagYypos += dy * easing;
+      if(aFlagAlphaRB > 125 && beginTimer > 240) aFlagYypos += dy * easing;
 
       //sun expands and lerps to USyd colour
       if(aFlagYypos-aFlagYyposEndPoint < 0.5 && sunD < width+100) {
@@ -232,7 +237,7 @@
     <input id="acknowledge-button" type="submit" value="Enter"></input>
   </form>
 </div>
-
+<p id="timer" style="position:absolute; z-index:1000;top:100px:left:100px;color:white;"> </p>
 </body>
 <p id="p5_loading" style="display:none;"> </p>
 
