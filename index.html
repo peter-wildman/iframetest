@@ -105,8 +105,6 @@
     <input id="acknowledge-button" type="submit" value="Enter"></input>
   </form>
 </div>
-<p id="timer" style="position:absolute; z-index:1000;top:50px;left:100px;color:white;"> </p>
-<p id="resize-log" style="position:absolute; z-index:1000;top:100px;left:100px;color:white;"> </p>
 <p id="p5_loading" style="display:none;"> </p>
 <script>
   //variables here
@@ -138,7 +136,6 @@
 
   function setup() {
     createCanvas(window.innerWidth, window.innerHeight);
-    document.getElementById("resize-log").innerHTML = window.innerWidth;
     noStroke();
     aFlagYypos = height + (height/3*2)/2;
     aFlagYyposEndPoint = height/2;
@@ -151,12 +148,12 @@
     if(leftPadding < 0) leftPadding = 0;
     document.getElementById("form-wrapper").style.left = leftPadding+"px";
     textFont(myFont);
+    showText = false
   }
 
   function draw() {
     beginTimer++;
     if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
-    document.getElementById("timer").innerHTML = beginTimer;
     //fade in Aboriginal flag
     textSize(fontSize);
     fill(0,aFlagAlphaRB);
