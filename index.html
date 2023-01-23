@@ -218,8 +218,9 @@
 
     function windowResized() {
        windowResizeAmnt++
+       resizeCanvas(document.body.clientWidth, document.body.clientHeight);
        if(beginTimer > 200){
-        resizeCanvas(document.body.clientWidth, document.body.clientHeight);
+        
         aFlagYypos = height/2;
         aFlagYyposEndPoint = aFlagYypos;
         let leftPadding = (width-616)/2;
