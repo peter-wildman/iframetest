@@ -118,6 +118,7 @@
     let parFour = "What Country are you on?";
 
     let beginTimer = 0;
+    let windowResizeAmnt = 0;
 
     function preload(){
       // myFont = loadFont('./apercu_bold_pro.otf');
@@ -156,9 +157,9 @@
       let dy = aFlagYyposEndPoint - aFlagYypos;
       circle(width/2, aFlagYypos,sunD);
       if(showText) background(toColor);
-      if(aFlagAlphaRB < 255) aFlagAlphaRB+= 0.5;
+      if(aFlagAlphaRB < 255) aFlagAlphaRB+= 1.5;
       //animate the sun up onto the flag
-      if(aFlagAlphaRB > 125 && beginTimer > 240) aFlagYypos += dy * easing;
+      if(aFlagAlphaRB > 125 && beginTimer > 150) aFlagYypos += dy * easing;
 
       //sun expands and lerps to USyd colour
       if(aFlagYypos-aFlagYyposEndPoint < 0.5 && sunD < width+100) {
@@ -216,15 +217,19 @@
     }
 
     function windowResized() {
+       windowResizeAmnt++
        resizeCanvas(document.body.clientWidth, document.body.clientHeight);
        aFlagYypos = height/2;
        aFlagYyposEndPoint = aFlagYypos;
        let leftPadding = (width-616)/2;
        if(leftPadding < 0) leftPadding = 0;
        document.getElementById("form-wrapper").style.left = leftPadding+"px";
-       document.getElementById("resize-log").innerHTML = "resized";
+       document.getElementById("resize-log").innerHTML = windowResizeAmnt
+       //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
     }
 
+
+    
   </script>
   <div id="form-wrapper">
   <h1> What Country are you on? </h1>
@@ -238,8 +243,8 @@
     <input id="acknowledge-button" type="submit" value="Enter"></input>
   </form>
 </div>
-<p id="timer" style="position:absolute; z-index:1000;top:100px;left:100px;color:white;"> </p>
-<p id="resize-log" style="position:absolute; z-index:1000;top:150px;left:100px;color:white;"> </p>
+<p id="timer" style="position:absolute; z-index:1000;top:50px;left:100px;color:white;"> </p>
+<p id="resize-log" style="position:absolute; z-index:1000;top:100px;left:100px;color:white;"> </p>
 </body>
 <p id="p5_loading" style="display:none;"> </p>
 
