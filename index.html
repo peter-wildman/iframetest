@@ -219,6 +219,7 @@
     function windowResized() {
        windowResizeAmnt++
        //resizeCanvas(document.body.clientWidth, document.body.clientHeight);
+       if(windowResizeAmnt > 5){
        resizeCanvas(window.innerWidth, window.innerHeight);
        aFlagYypos = height/2;
        aFlagYyposEndPoint = aFlagYypos;
@@ -226,6 +227,7 @@
        if(leftPadding < 0) leftPadding = 0;
        document.getElementById("form-wrapper").style.left = leftPadding+"px";
        document.getElementById("resize-log").innerHTML = windowResizeAmnt
+       }
        //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
     }
 
