@@ -129,6 +129,10 @@
 
     function setup() {
       createCanvas(window.innerWidth, window.innerHeight);
+      while(window.innerWidth < 1){
+        createCanvas(window.innerWidth, window.innerHeight);
+      }
+      
       document.getElementById("resize-log").innerHTML = window.innerWidth;
       noStroke();
       aFlagYypos = height + (height/3*2)/2;
