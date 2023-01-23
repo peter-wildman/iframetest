@@ -218,11 +218,14 @@
 
     function windowResized() {
        windowResizeAmnt++
-       resizeCanvas(document.body.clientWidth, document.body.clientHeight);
-       aFlagYypos = height/2;
-       aFlagYyposEndPoint = aFlagYypos;
-       let leftPadding = (width-616)/2;
-       if(leftPadding < 0) leftPadding = 0;
+       if(beginTimer > 200){
+        resizeCanvas(document.body.clientWidth, document.body.clientHeight);
+        aFlagYypos = height/2;
+        aFlagYyposEndPoint = aFlagYypos;
+        let leftPadding = (width-616)/2;
+        if(leftPadding < 0) leftPadding = 0;
+       }
+       
        document.getElementById("form-wrapper").style.left = leftPadding+"px";
        document.getElementById("resize-log").innerHTML = windowResizeAmnt
        //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
