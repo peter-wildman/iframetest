@@ -156,7 +156,7 @@
     beginTimer++;
     
     if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
-    if(beginTimer < 149) {
+    if(beginTimer < 99) {
       showText = false;
       aFlagYypos = window.innerHeight + (window.innerHeight/3*2)/2;
       aFlagYyposEndPoint = window.innerHeight/2;
@@ -175,7 +175,7 @@
     if(showText) background(toColor);
     if(aFlagAlphaRB < 255) aFlagAlphaRB+= 1.5;
     //animate the sun up onto the flag
-    if(aFlagAlphaRB > 125 && beginTimer > 150) aFlagYypos += dy * easing;
+    if(aFlagAlphaRB > 125 && beginTimer > 100) aFlagYypos += dy * easing;
 
     //sun expands and lerps to USyd colour
     if(aFlagYypos-aFlagYyposEndPoint < 0.5 && sunD < width+100) {
