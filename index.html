@@ -108,8 +108,6 @@
 <p id="timer" style="position:absolute; z-index:1000;top:50px;left:100px;color:white;"> </p>
 <p id="resize-log" style="position:absolute; z-index:1000;top:100px;left:100px;color:white;"> </p>
 <p id="p5_loading" style="display:none;"> </p>
-</body>
-
 <script>
   //variables here
   let myFont;
@@ -214,7 +212,6 @@
       } else if(textstage == 3){
         fontSize = height*0.12;
         timer++;
-        //console.log(timer);
         textAlign(CENTER,TOP);
         if(timer >930){
           document.getElementById("form-wrapper").style.display = "block";
@@ -231,7 +228,6 @@
 
   function windowResized() {
      windowResizeAmnt++
-     //resizeCanvas(document.body.clientWidth, document.body.clientHeight);
      if(windowResizeAmnt > 5){
      resizeCanvas(window.innerWidth, window.innerHeight);
      aFlagYypos = height/2;
@@ -241,8 +237,7 @@
      document.getElementById("form-wrapper").style.left = leftPadding+"px";
      document.getElementById("resize-log").innerHTML = windowResizeAmnt
      }
-     //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
   } 
 </script>
-
+</body>
 </html>
