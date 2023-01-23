@@ -154,11 +154,13 @@
 
   function draw() {
     beginTimer++;
-    if(beginTimer < 120) {
-      showText = false;
-      aFlagYypos = height + (height/3*2)/2;
-    }
+    
     if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
+    if(beginTimer < 149) {
+      showText = false;
+      aFlagYypos = window.innerHeight + (window.innerHeight/3*2)/2;
+      aFlagYyposEndPoint = window.innerHeight/2;
+    }
     //fade in Aboriginal flag
     textSize(fontSize);
     fill(0,aFlagAlphaRB);
