@@ -90,152 +90,9 @@
       });
     });
     </script>
-    <script>
-
-      //variables here
-      let myFont;
-      let aFlagAlphaRB = 0;
-      let aFlagYypos;
-      let aFlagYyposEndPoint;
-      let sunD;
-      let sunDStarting;
-      let easing = 0.05;
-      let sunColor;
-      let fromColor, toColor;
-      let fontSize;
-      let showText = false;
-      let timer = 0;
-      let textstage = 0;
-  
-      let parOne = "The University of Sydney acknowledges the custodians and cultural authorities of the lands on which it operates.";
-      let parTwo = "The lands of the Gadigal, Deerubbin, Dharug, Kamilaroi, Wiljali, Wangal, Tharawal, Bundjalung, Kur-ing-gai, Cammeraygal and Wiradjuri peoples.";
-      let parThree = "We pay respects to their Elders, knowledge systems, customs and lores.";
-      let parFour = "What Country are you on?";
-  
-      let beginTimer = 0;
-      let windowResizeAmnt = 0;
-  
-      function preload(){
-        // myFont = loadFont('./apercu_bold_pro.otf');
-        // myFont = loadFont('./apercu_light_pro_95.otf');
-        myFont = loadFont('./apercu_medium_pro.otf');
-  
-      }
-  
-      function setup() {
-        createCanvas(document.body.clientWidth, document.body.clientHeight);
-        document.getElementById("resize-log").innerHTML = window.innerWidth;
-        noStroke();
-        aFlagYypos = height + (height/3*2)/2;
-        aFlagYyposEndPoint = height/2;
-        sunD = height/3*2;
-        sunDStarting = sunD;
-        sunColor = color(255,255,0);
-        fromColor = color(255,255,0);
-        toColor = color(240,78,35);
-        let leftPadding = (width-616)/2;
-        if(leftPadding < 0) leftPadding = 0;
-        document.getElementById("form-wrapper").style.left = leftPadding+"px";
-        textFont(myFont);
-      }
-  
-      function draw() {
-        beginTimer++;
-        document.getElementById("timer").innerHTML = beginTimer;
-        //fade in Aboriginal flag
-        textSize(fontSize);
-        fill(0,aFlagAlphaRB);
-        rect(0,0,width,height/2);
-        fill(255,0,0,aFlagAlphaRB);
-        rect(0,height/2,width,height/2);
-  
-        fill(sunColor);
-        let dy = aFlagYyposEndPoint - aFlagYypos;
-        circle(width/2, aFlagYypos,sunD);
-        if(showText) background(toColor);
-        if(aFlagAlphaRB < 255) aFlagAlphaRB+= 1.5;
-        //animate the sun up onto the flag
-        if(aFlagAlphaRB > 125 && beginTimer > 150) aFlagYypos += dy * easing;
-  
-        //sun expands and lerps to USyd colour
-        if(aFlagYypos-aFlagYyposEndPoint < 0.5 && sunD < width+100) {
-          sunD+= 10.5;
-          let amt = (sunD - sunDStarting)/((width+100)-sunDStarting);
-          sunColor = lerpColor(fromColor,toColor,amt);
-        }
-  
-        if(sunD >= width+100) showText = true;
-        if(showText){
-          fill(255);
-          textAlign(CENTER,CENTER);
-  
-          if(textstage == 0){
-            fontSize = height*0.17;
-            if(timer >10) text(parOne,width*0.125,height*0.08,width*0.75,height*0.75);
-            timer++;
-            if(timer > 250){
-              textstage = 1;
-              background(toColor);
-            }
-          } else if(textstage == 1){
-            fontSize = height*0.15;
-            timer++;
-            if(timer >260)text(parTwo,width*0.125,height*0.08,width*0.75,height*0.75);
-            if(timer > 700){
-              textstage = 2;
-              background(toColor);
-            }
-          } else if(textstage == 2){
-            fontSize = height*0.17;
-            timer++;
-            //console.log(timer);
-            if(timer >710)text(parThree,width*0.125,height*0.08,width*0.75,height*0.75);
-            if(timer > 900){
-              textstage = 3;
-              background(toColor);
-            }
-          } else if(textstage == 3){
-            fontSize = height*0.12;
-            timer++;
-            //console.log(timer);
-            textAlign(CENTER,TOP);
-            if(timer >930){
-              document.getElementById("form-wrapper").style.display = "block";
-              document.getElementById("country-input").focus();
-            }
-          }
-        }
-  
-  
-        if(mouseIsPressed){
-        // document.body.style.display = "none";
-        }
-      }
-  
-      function windowResized() {
-         windowResizeAmnt++
-         //resizeCanvas(document.body.clientWidth, document.body.clientHeight);
-         if(windowResizeAmnt > 5){
-         resizeCanvas(window.innerWidth, window.innerHeight);
-         aFlagYypos = height/2;
-         aFlagYyposEndPoint = aFlagYypos;
-         let leftPadding = (width-616)/2;
-         if(leftPadding < 0) leftPadding = 0;
-         document.getElementById("form-wrapper").style.left = leftPadding+"px";
-         document.getElementById("resize-log").innerHTML = windowResizeAmnt
-         }
-         //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
-      }
-  
-  
-      
-    </script>
-  </head>
-  <body>
-
-
-
     
+  </head>
+  <body>  
   <div id="form-wrapper">
   <h1> What Country are you on? </h1>
   <form
@@ -250,7 +107,142 @@
 </div>
 <p id="timer" style="position:absolute; z-index:1000;top:50px;left:100px;color:white;"> </p>
 <p id="resize-log" style="position:absolute; z-index:1000;top:100px;left:100px;color:white;"> </p>
-</body>
 <p id="p5_loading" style="display:none;"> </p>
+</body>
+
+<script>
+  //variables here
+  let myFont;
+  let aFlagAlphaRB = 0;
+  let aFlagYypos;
+  let aFlagYyposEndPoint;
+  let sunD;
+  let sunDStarting;
+  let easing = 0.05;
+  let sunColor;
+  let fromColor, toColor;
+  let fontSize;
+  let showText = false;
+  let timer = 0;
+  let textstage = 0;
+
+  let parOne = "The University of Sydney acknowledges the custodians and cultural authorities of the lands on which it operates.";
+  let parTwo = "The lands of the Gadigal, Deerubbin, Dharug, Kamilaroi, Wiljali, Wangal, Tharawal, Bundjalung, Kur-ing-gai, Cammeraygal and Wiradjuri peoples.";
+  let parThree = "We pay respects to their Elders, knowledge systems, customs and lores.";
+  let parFour = "What Country are you on?";
+
+  let beginTimer = 0;
+  let windowResizeAmnt = 0;
+
+  function preload(){
+    myFont = loadFont('./apercu_medium_pro.otf');
+  }
+
+  function setup() {
+    createCanvas(window.innerWidth, window.innerHeight);
+    document.getElementById("resize-log").innerHTML = window.innerWidth;
+    noStroke();
+    aFlagYypos = height + (height/3*2)/2;
+    aFlagYyposEndPoint = height/2;
+    sunD = height/3*2;
+    sunDStarting = sunD;
+    sunColor = color(255,255,0);
+    fromColor = color(255,255,0);
+    toColor = color(240,78,35);
+    let leftPadding = (width-616)/2;
+    if(leftPadding < 0) leftPadding = 0;
+    document.getElementById("form-wrapper").style.left = leftPadding+"px";
+    textFont(myFont);
+  }
+
+  function draw() {
+    beginTimer++;
+    if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
+    document.getElementById("timer").innerHTML = beginTimer;
+    //fade in Aboriginal flag
+    textSize(fontSize);
+    fill(0,aFlagAlphaRB);
+    rect(0,0,width,height/2);
+    fill(255,0,0,aFlagAlphaRB);
+    rect(0,height/2,width,height/2);
+
+    fill(sunColor);
+    let dy = aFlagYyposEndPoint - aFlagYypos;
+    circle(width/2, aFlagYypos,sunD);
+    if(showText) background(toColor);
+    if(aFlagAlphaRB < 255) aFlagAlphaRB+= 1.5;
+    //animate the sun up onto the flag
+    if(aFlagAlphaRB > 125 && beginTimer > 150) aFlagYypos += dy * easing;
+
+    //sun expands and lerps to USyd colour
+    if(aFlagYypos-aFlagYyposEndPoint < 0.5 && sunD < width+100) {
+      sunD+= 10.5;
+      let amt = (sunD - sunDStarting)/((width+100)-sunDStarting);
+      sunColor = lerpColor(fromColor,toColor,amt);
+    }
+
+    if(sunD >= width+100) showText = true;
+    if(showText){
+      fill(255);
+      textAlign(CENTER,CENTER);
+
+      if(textstage == 0){
+        fontSize = height*0.17;
+        if(timer >10) text(parOne,width*0.125,height*0.08,width*0.75,height*0.75);
+        timer++;
+        if(timer > 250){
+          textstage = 1;
+          background(toColor);
+        }
+      } else if(textstage == 1){
+        fontSize = height*0.15;
+        timer++;
+        if(timer >260)text(parTwo,width*0.125,height*0.08,width*0.75,height*0.75);
+        if(timer > 700){
+          textstage = 2;
+          background(toColor);
+        }
+      } else if(textstage == 2){
+        fontSize = height*0.17;
+        timer++;
+        //console.log(timer);
+        if(timer >710)text(parThree,width*0.125,height*0.08,width*0.75,height*0.75);
+        if(timer > 900){
+          textstage = 3;
+          background(toColor);
+        }
+      } else if(textstage == 3){
+        fontSize = height*0.12;
+        timer++;
+        //console.log(timer);
+        textAlign(CENTER,TOP);
+        if(timer >930){
+          document.getElementById("form-wrapper").style.display = "block";
+          document.getElementById("country-input").focus();
+        }
+      }
+    }
+
+
+    if(mouseIsPressed){
+    // document.body.style.display = "none";
+    }
+  }
+
+  function windowResized() {
+     windowResizeAmnt++
+     //resizeCanvas(document.body.clientWidth, document.body.clientHeight);
+     if(windowResizeAmnt > 5){
+     resizeCanvas(window.innerWidth, window.innerHeight);
+     aFlagYypos = height/2;
+     aFlagYyposEndPoint = aFlagYypos;
+     let leftPadding = (width-616)/2;
+     if(leftPadding < 0) leftPadding = 0;
+     document.getElementById("form-wrapper").style.left = leftPadding+"px";
+     document.getElementById("resize-log").innerHTML = windowResizeAmnt
+     }
+     //if(mouseIsPressed) document.getElementById("resize-log").innerHTML = "mouse resize";
+  } 
+</script>
 
 </html>
