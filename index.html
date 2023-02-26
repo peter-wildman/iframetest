@@ -18,47 +18,7 @@
       src: url(apercu_medium_pro.otf);
     }
 
-    #form-wrapper{
-      position: absolute;
-      z-index:1000;
-      top:5%;
-      display: none;
-    }
-    #form-wrapper h1{
-      margin-left: 11%;
-      color: #fff;
-      font-size: 2.5em;
-      padding-bottom: 7px;
-      font-family: 'theFont';
-    }
 
-    #country-input{
-      width: 400px;
-      height: 47px;
-      font-size: 170%;
-      text-align: center;
-      border: none;
-      background: #ffffff73;
-    }
-
-    #country-input:focus {
-      outline: none !important;
-      border:1px solid #f04e23;
-    }
-
-    #acknowledge-button{
-      height: 50.5px;
-      width: 200px;
-      font-size: 170%;
-      border: none;
-      font-weight: normal;
-      margin-left: 8px;
-      background: #00000073;
-      color: #fff;
-      cursor: pointer;
-      position: relative;
-      top: 0.2px;
-    }
 
     ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
       color: #000;
@@ -74,42 +34,15 @@
     }
 
     </style>
-    <script>
-    window.addEventListener("load", function() {
-      const form = document.getElementById('my-form');
-      form.addEventListener("submit", function(e) {
-        e.preventDefault();
-        const data = new FormData(form);
-        const action = e.target.action;
-        console.log("complete");
-        fetch(action, {
-          method: 'POST',
-          body: data
-        }).then(() => {
-          alert("Success!");
-        })
-      });
-    });
-    </script>
+    
     
   </head>
   <body>  
-  <div id="form-wrapper">
-  <h1> What Country are you on? </h1>
-  <form
-    method="POST"
-    action="https://script.google.com/macros/s/AKfycbzoo_mzGdR97OBbQQ6LNy86qNB_sq2AszW3vs5u9FdoG5fG-mjI8AnQRXK_qiXJcxFF/exec"
-    id="my-form"
-    onsubmit="alert('nice');"
-  >
-    <input id="country-input" name="Country" type="country" placeholder=" " required>
-    <input id="acknowledge-button" type="submit" value="Enter"></input>
-  </form>
-</div>
+  
 <p id="p5_loading" style="display:none;"> </p>
 <script>
   //variables here
-  let myFont;
+  //let myFont;
   let aFlagAlphaRB = 0;
   let aFlagYypos;
   let aFlagYyposEndPoint;
@@ -132,7 +65,7 @@
   let windowResizeAmnt = 0;
 
   function preload(){
-    myFont = loadFont('./apercu_medium_pro.otf');
+    //myFont = loadFont('./apercu_medium_pro.otf');
   }
 
   function setup() {
@@ -147,8 +80,7 @@
     toColor = color(240,78,35);
     let leftPadding = (width-616)/2;
     if(leftPadding < 0) leftPadding = 0;
-    document.getElementById("form-wrapper").style.left = leftPadding+"px";
-    textFont(myFont);
+    //textFont(myFont);
     showText = false
   }
 
@@ -190,7 +122,7 @@
       textAlign(CENTER,CENTER);
       aFlagYypos = height + (height/3*2)/2;
       if(textstage == 0){
-        fontSize = height*0.17;
+        fontSize = height*0.1;
         if(timer >10) text(parOne,width*0.125,height*0.08,width*0.75,height*0.75);
         timer++;
         if(timer > 250){
@@ -198,7 +130,7 @@
           background(toColor);
         }
       } else if(textstage == 1){
-        fontSize = height*0.15;
+        fontSize = height*0.1;
         timer++;
         if(timer >260)text(parTwo,width*0.125,height*0.08,width*0.75,height*0.75);
         if(timer > 700){
@@ -206,7 +138,7 @@
           background(toColor);
         }
       } else if(textstage == 2){
-        fontSize = height*0.17;
+        fontSize = height*0.12;
         timer++;
         //console.log(timer);
         if(timer >710)text(parThree,width*0.125,height*0.08,width*0.75,height*0.75);
@@ -215,12 +147,11 @@
           background(toColor);
         }
       } else if(textstage == 3){
-        fontSize = height*0.12;
+        fontSize = height*0.10;
         timer++;
         textAlign(CENTER,TOP);
         if(timer >930){
-          document.getElementById("form-wrapper").style.display = "block";
-          document.getElementById("country-input").focus();
+          
         }
       }
     }
@@ -239,7 +170,6 @@
      aFlagYyposEndPoint = aFlagYypos;
      let leftPadding = (width-616)/2;
      if(leftPadding < 0) leftPadding = 0;
-     document.getElementById("form-wrapper").style.left = leftPadding+"px";
      }
   } 
 </script>
