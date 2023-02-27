@@ -59,7 +59,7 @@
   let parOne = "The University of Sydney acknowledges the custodians and cultural authorities of the lands on which it operates.";
   let parTwo = "The lands of the Gadigal, Deerubbin, Dharug, Kamilaroi, Wiljali, Wangal, Tharawal, Bundjalung, Kur-ing-gai, Cammeraygal and Wiradjuri peoples.";
   let parThree = "We pay respects to their Elders, knowledge systems, customs and lores.";
-  let parFour = "What Country are you on?";
+  let parFour = "We acknowledge and value the important role Aboriginal and Torres Strait Islander staff, students and communities bring to the University of Sydney.";
 
   let beginTimer = 0;
   let windowResizeAmnt = 0;
@@ -149,10 +149,11 @@
       } else if(textstage == 3){
         fontSize = height*0.10;
         timer++;
-        textAlign(CENTER,TOP);
+        
         if(timer >930){
-          
+          text(parFour,width*0.125,height*0.08,width*0.75,height*0.75);
         }
+        if(timer > 1300) document.body.style.display = "none";
       }
     }
 
