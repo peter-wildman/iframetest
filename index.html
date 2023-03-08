@@ -87,7 +87,8 @@
   function draw() {
     beginTimer++;
     
-    if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
+    // if(beginTimer > 10 && width < 1) resizeCanvas(window.innerWidth, window.innerHeight);
+    if(beginTimer > 13 && beginTimer < 15) resizeCanvas(window.innerWidth, window.innerHeight);
     if(beginTimer < 99) {
       showText = false;
       aFlagYypos = window.innerHeight + (window.innerHeight/3*2)/2;
