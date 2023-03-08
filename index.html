@@ -159,16 +159,14 @@
           text(parFour,width*0.125,height*0.08,width*0.75,height*0.75);
         }
         if(timer > 1300) {
-          textAlpha-=4;
+          textAlpha-=6;
           if(textAlpha < 10) document.body.style.display = "none";
         }
       }
     }
 
 
-    if(mouseIsPressed){
-      document.body.style.display = "none";
-    }
+    
   }
 
   function windowResized() {
