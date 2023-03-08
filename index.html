@@ -127,7 +127,7 @@
       textAlign(CENTER,CENTER);
       aFlagYypos = height + (height/3*2)/2;
       if(textstage == 0){
-        fontSize = height*0.1;
+        fontSize = height*0.13;
         if(timer >10) text(parOne,width*0.125,height*0.08,width*0.75,height*0.75);
         timer++;
         if(timer > 250){
@@ -135,7 +135,7 @@
           background(toColor);
         }
       } else if(textstage == 1){
-        fontSize = height*0.1;
+        fontSize = height*0.13;
         timer++;
         if(timer >260)text(parTwo,width*0.125,height*0.08,width*0.75,height*0.75);
         if(timer > 700){
@@ -143,16 +143,15 @@
           background(toColor);
         }
       } else if(textstage == 2){
-        fontSize = height*0.12;
+        fontSize = height*0.13;
         timer++;
-        //console.log(timer);
         if(timer >710)text(parThree,width*0.125,height*0.08,width*0.75,height*0.75);
         if(timer > 900){
           textstage = 3;
           background(toColor);
         }
       } else if(textstage == 3){
-        fontSize = height*0.10;
+        fontSize = height*0.13;
         timer++;
         
         if(timer >930){
