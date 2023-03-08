@@ -42,7 +42,7 @@
 <p id="p5_loading" style="display:none;"> </p>
 <script>
   //variables here
-  //let myFont;
+  let myFont;
   let aFlagAlphaRB = 0;
   let aFlagYypos;
   let aFlagYyposEndPoint;
@@ -65,7 +65,7 @@
   let windowResizeAmnt = 0;
 
   function preload(){
-    //myFont = loadFont('./apercu_medium_pro.otf');
+    myFont = loadFont('./apercu_medium_pro.otf');
   }
 
   function setup() {
@@ -80,7 +80,7 @@
     toColor = color(240,78,35);
     let leftPadding = (width-616)/2;
     if(leftPadding < 0) leftPadding = 0;
-    //textFont(myFont);
+    textFont(myFont);
     showText = false
   }
 
@@ -159,7 +159,7 @@
 
 
     if(mouseIsPressed){
-    // document.body.style.display = "none";
+    document.body.style.display = "none";
     }
   }
 
