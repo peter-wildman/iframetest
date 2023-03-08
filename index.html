@@ -70,7 +70,8 @@
   }
 
   function setup() {
-    createCanvas(window.innerWidth, window.innerHeight);
+    let cnv = createCanvas(window.innerWidth, window.innerHeight);
+    cnv.id('mycanvas');
     noStroke();
     aFlagYypos = height + (height/3*2)/2;
     aFlagYyposEndPoint = height/2;
@@ -160,7 +161,7 @@
 
 
     if(mouseIsPressed){
-    document.body.style.display = "none";
+    document.getElementById('mycanvas').style.display = "none";
     }
   }
 
