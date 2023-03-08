@@ -63,6 +63,7 @@
 
   let beginTimer = 0;
   let windowResizeAmnt = 0;
+  let textAlpha = 255;
 
   function preload(){
     myFont = loadFont('./apercu_medium_pro.otf');
@@ -123,7 +124,7 @@
 
     if(sunD >= width+100) showText = true;
     if(showText){
-      fill(255);
+      fill(255, textAlpha);
       textAlign(CENTER,CENTER);
       aFlagYypos = height + (height/3*2)/2;
       if(textstage == 0){
@@ -157,7 +158,10 @@
         if(timer >930){
           text(parFour,width*0.125,height*0.08,width*0.75,height*0.75);
         }
-        if(timer > 1300) document.body.style.display = "none";
+        if(timer > 1300) {
+          textAlpha--;
+          if(textAlpha < 10) document.body.style.display = "none";
+        }
       }
     }
 
